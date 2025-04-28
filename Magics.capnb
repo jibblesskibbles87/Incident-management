@@ -1,0 +1,120 @@
+[
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "# Magic commands\n\n_Magic_ commands, or just _Magics_, are **conventient functions to solve common problems** which might already be known from [IPython](https://ipython.readthedocs.io/en/stable/interactive/magics.html):\n\n- They can be easily recognized as they start with `%`:\n  - Single `%` are for [_Line_ Magics](#line-magics) which take a _single_ line of input.\n  - Doube `%%` are for [_Cell_ Magics](#cell-magics) which take _multiple_ lines of input.\n- When executed, run the common task in an underlying (pre-defined) subprocess.\n- Ideal for recycling and common tasks, normalising and simplifiying the Notebook's workflow.\n- Output is returned to the CAP Notebook.\n- Get help by:\n  - Running the [`%quickref`](#quickref) Line Magic to get an overview of all Magic commands, their description and input arguments.\n  - Hovering over the highlighted Magic command to see its description and input arguments (i.e. its [`%quickref`](#quickref) entry).\n\n## Line Magics\n\n### [`%quickref`](#quickref)\n\nOne of the simplest (and very useful) Line Magic is `%quickref`.\n\nWhen called, this magic provides a small table with _all_ available Magic commands available in a CAP Notebook, which serves as a great loop-up reference before trying to do a common task in a complicated (and, in some cases, non-shell-agnostic) way:\n",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%quickref",
+        "outputs": [
+            {
+                "mime": "text/html",
+                "value": "<table><thead><tr><td>Command</td><td>Arguments</td><td>Description</td><td>Examples</td></tr></thead>\n<tr>\n  <td><code>%%extendjson</code></td>\n  <td><code>&lt;\"filename\"&gt; [\"a1&gt;...&gt;an\"]</code></td>\n  <td><i>Writes cell contents to file</i></td>\n  <td>CAP Sample Notebook <b>Magics</b>, section <i>%%extendjson</i></td>\n</tr>\n<tr>\n  <td><code>%quickref</code></td>\n  <td><code></code></td>\n  <td><i>Lists and describes all magic commands</i></td>\n  <td>CAP Sample Notebook <b>Magics</b>, section <i>%quickref</i></td>\n</tr>\n<tr>\n  <td><code>%reset</code></td>\n  <td><code>\"&lt;component&gt;\"</code></td>\n  <td><i>Resets the given component</i></td>\n  <td>CAP Sample Notebook <b>Magics</b>, section <i>%reset</i></td>\n</tr>\n<tr>\n  <td><code>%systeminfo</code></td>\n  <td><code></code></td>\n  <td><i>Shows the system info</i></td>\n  <td>CAP Sample Notebook <b>Magics</b>, section <i>%systeminfo</i></td>\n</tr>\n<tr>\n  <td><code>%%writefile</code></td>\n  <td><code>[-a|--append] &lt;\"filename\"&gt;</code></td>\n  <td><i>Writes cell contents to file</i></td>\n  <td>CAP Sample Notebook <b>Magics</b>, section <i>%%writefile</i></td>\n</tr>\n"
+            }
+        ]
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "### [`%reset`](#reset)\n\nThe `%reset` command resets the namespace by removing all names defined by the user.\n\nThe following cell for example, resets directory history:\n",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%reset \"dhist\"",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "### [`%systeminfo`](#systeminfo)\n\nThe `%systeminfo` command shows the system info, which are a collection of parameters that might be useful when trying to debugging a CAP Notebook that shows unexpected behaviors in different os- or local development-environments.\n",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "%systeminfo",
+        "outputs": [
+            {
+                "mime": "text/html",
+                "value": "2025-04-24 22:41:29 UTC<br><br><b>os.platform</b><br>linux<br><br><b>default shell</b><br>undefined<br><br><b>node -v</b><br>v22.13.1<br><br><b>npm -v</b><br>10.9.2<br><br><b>java -version</b><br>openjdk version \"21.0.2\" 2024-01-16 LTS<br>OpenJDK Runtime Environment SapMachine (build 21.0.2+13-LTS)<br>OpenJDK 64-Bit Server VM SapMachine (build 21.0.2+13-LTS, mixed mode, sharing)<br><br><b>mvn -v</b><br>Apache Maven 3.8.8 (4c87b05d9aedce574290d1acc98575ed5eb6cd39)<br>Maven home: /home/user/.asdf-inst/installs/maven/3.8.8<br>Java version: 21.0.2, vendor: SAP SE, runtime: /local/asdf-inst-inbox-runtime/installs/java/sapmachine-21.0.2<br>Default locale: en_US, platform encoding: UTF-8<br>OS name: \"linux\", version: \"6.6.63-cloud-amd64\", arch: \"amd64\", family: \"unix\"<br><br><b>cf -v</b><br>cf version 8.7.4+db5d612.2023-10-20<br><br><b>cds v</b><br>@cap-js/asyncapi: 1.0.3<br>@cap-js/db-service: 1.20.0<br>@cap-js/openapi: 1.2.1<br>@sap/cds: 8.9.2<br>@sap/cds-compiler: 5.9.2<br>@sap/cds-dk: 8.8.2<br>@sap/cds-dk (global): 8.8.2<br>@sap/cds-fiori: 1.4.1<br>@sap/cds-foss: 5.0.1<br>@sap/cds-mtxs: 2.7.2<br>@sap/eslint-plugin-cds: 3.2.0<br>Node.js: v22.13.1<br>home: /extbin/globals/pnpm/5/.pnpm/@sap+cds@8.9.2_@eslint+js@9.25.1_express@4.21.2/node_modules/@sap/cds<br><br><b>code -v</b><br>/bin/sh: 1: code: not found<br><br><b>kubectl version --short --client=true</b><br>/bin/sh: 1: kubectl: not found<br>\n"
+            }
+        ]
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "## Cell Magics\n\n### [`%%extendjson`](#extendjson)\n\nThe `%%extendjson` command is useful when adding content to an existing _JSON_ file. It then merges the contents of the input _JSON_ with that of the existing one.\n\nLet's assume we start with an empty _JSON_ \"package.json\". For simplicity, we will use the [`%%writefile`](#writefile) magic command to create this file:\n",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "json",
+        "value": "%%writefile \"package.json\"\n{}",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "The next cell demonstrates how to use the `%%extendjson` command to add the cell's input content:\n",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "json",
+        "value": "%%extendjson \"package.json\"\n{\n    \"cds\": {\n        \"requires\": {\n            \"db\": {\n                \"kind\": \"sqlite\"\n            }\n        }\n    }\n}",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "The next cell demonstrates how to use the `%%extendjson` command using a second \"path\" argument. The path uses '>' as delimiters and means that the cell's input content will be merged with the existing *JSON* at \"cds.requires\":",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "json",
+        "value": "%%extendjson \"package.json\" \"cds>requires\"\n{\n    \"extensibility\": true\n}",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "rm package.json",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "### [`%%writefile`](#writefile)\n\nThe `%%writefile` command is simply a short and os-agnostic way to write a file to disk.\n\nFor example, let's start creating a *CDS* model by providing a namespace:",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "cds",
+        "value": "%%writefile \"schema.cds\"\nnamespace sap.capire.bookshop;",
+        "outputs": []
+    },
+    {
+        "kind": 1,
+        "language": "markdown",
+        "value": "The next cell shows how to use an additional `-a` flag (or `--append`) to append the cell's input content to the existing file:",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "cds",
+        "value": "%%writefile -a \"schema.cds\"\n\nentity Books {\n  key ID : Integer;\n  title  : String;\n  author : Sting;\n}",
+        "outputs": []
+    },
+    {
+        "kind": 2,
+        "language": "shell",
+        "value": "rm schema.cds",
+        "outputs": []
+    }
+]
