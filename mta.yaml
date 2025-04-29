@@ -1,6 +1,6 @@
 _schema-version: 3.3.0
 ID: incident-management
-version: 1.0.0
+version: 1.0.1
 description: "A simple CAP project."
 parameters:
   enable-parallel-deployments: true
@@ -28,6 +28,7 @@ modules:
       - name: incident-management-db
       - name: incident-management-auth
       - name: incident-management-destination
+    deployed-after: [incident-management-db]
 
   - name: incident-management-db-deployer
     type: hdb
