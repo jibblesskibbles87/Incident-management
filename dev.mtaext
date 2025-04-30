@@ -1,0 +1,8 @@
+_schema-version: 3.3.0
+ID: incident-management-dev
+extends: incident-management
+
+modules:
+  - name: incident-management-srv
+    parameters:
+      instances: 2

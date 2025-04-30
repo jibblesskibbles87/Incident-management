@@ -28,7 +28,6 @@ modules:
       - name: incident-management-db
       - name: incident-management-auth
       - name: incident-management-destination
-    deployed-after: [incident-management-db]
 
   - name: incident-management-db-deployer
     type: hdb
